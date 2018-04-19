@@ -1,0 +1,17 @@
+version: '3'
+services:
+  jenkins:
+    build: ./jenkinsci
+    ports:
+      - 80:8080
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
+    networks:
+      - fabric
+
+volumes:
+  docker:
+  jenkinsdata:
+
+networks:
+  fabric:
