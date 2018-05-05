@@ -10,12 +10,5 @@ services:
     networks:
       - fabric
 
-  weaver:
-    build: ./weaver
-    volumns:
-      - ./jenkinsci/data:/var/weaver
-    networks:
-      - fabric
-
 networks:
   fabric:
