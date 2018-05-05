@@ -1,0 +1,3 @@
+[submodule "fibre"]
+	path = fibre
+	url = git@github.com:sitdh/fibre.git
