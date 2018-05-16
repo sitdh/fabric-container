@@ -1,5 +1,15 @@
 version: '3'
 services:
+  weaver:
+    image: tomcat:9-jre10-slim
+    restart: on-failure
+    depends_on:
+      - jenkins
+    volumes:
+      - project-build:/projects-build:ro
+    networks:
+      - fabric
+
   jenkins:
     build: ./jenkinsci
     ports:
@@ -7,8 +17,12 @@ services:
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - ./jenkinsci/data:/var/jenkins_home
+      - project-build:/var/jenkins_home/workspace
     networks:
       - fabric
 
 networks:
   fabric:
+
+volumes:
+  project-build:
